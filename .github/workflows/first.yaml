@@ -12,6 +12,7 @@ jobs:
         run: echo Hello
 
   backend:
+    needs: [Helloworld]
     runs-on: ubuntu-latest
     defaults:
       run:

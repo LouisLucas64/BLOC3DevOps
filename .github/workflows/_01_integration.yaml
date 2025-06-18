@@ -3,7 +3,7 @@ name: 01 - Integration
 on:
   push:
     branches:
-      - develop
+      - marcel
 
 jobs:
   Test_Back_Front:
@@ -12,6 +12,6 @@ jobs:
   Quality_SonarQube:
     needs: [Test_Back_Front]
     uses: ./.github/workflows/01-2_SonarQube.yaml
-    secrets: inherit
+    secrets: initbdd
 
-  # Security_Snyk
+  #Security_Snyk

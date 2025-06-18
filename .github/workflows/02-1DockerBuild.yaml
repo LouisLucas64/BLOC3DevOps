@@ -12,7 +12,7 @@ jobs:
   build-Push-DockerGhcr:
     runs-on: ubuntu-latest
     steps:
-      - uses: Checkout
+      - name: Checkout
         uses: actions/checkout@v3
         
       - name: Registry Login

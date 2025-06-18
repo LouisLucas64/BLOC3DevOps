@@ -5,7 +5,7 @@ on:
     branches:
       - develop
 
-jobes:
+jobs:
   Test_Back_Front:
     uses: ./.github/workflows/01-1_TestBackFront.yaml
 

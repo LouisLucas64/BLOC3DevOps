@@ -12,6 +12,6 @@ jobs:
   Quality_SonarQube:
     needs: [Test_Back_Front]
     uses: ./.github/workflows/01-2_SonarQube.yaml
-    secrets: initbdd
+    secrets: inherit
 
   #Security_Snyk

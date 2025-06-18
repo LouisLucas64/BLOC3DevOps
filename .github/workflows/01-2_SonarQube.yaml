@@ -1,9 +1,9 @@
 name: 01-2 - Integration SonarQube
 
-one:
+on:
   workflow_call
 
-jobes:
+jobs:
   QualityBack:
     runs-on: ubuntu-latest
     defaults:
@@ -14,7 +14,7 @@ jobes:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Dowload Artifact
+      - name: Download Artifact
         uses: actions/download-artifact@v4
         with:
           name: back-coverage-report
@@ -25,9 +25,9 @@ jobes:
         with:
           projectBaseDir: ./backend
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_EPAD_BACK }}
-    
-    QualityFront:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACK }}
+
+  QualityFront:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -37,7 +37,7 @@ jobes:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Dowload Artifact
+      - name: Download Artifact
         uses: actions/download-artifact@v4
         with:
           name: front-coverage-report
@@ -48,4 +48,4 @@ jobes:
         with:
           projectBaseDir: ./frontend
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_EPAD_FRONT }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONT }}

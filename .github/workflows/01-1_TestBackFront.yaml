@@ -1,9 +1,7 @@
-name: Frero
+name: 01-1 - Test Back Front
 
 on:
-  push:
-    branches:
-      - develop
+  workflow_call 
 
 jobs:
   Helloworld:

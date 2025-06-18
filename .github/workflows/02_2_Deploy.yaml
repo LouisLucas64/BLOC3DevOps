@@ -31,7 +31,8 @@ jobs:
 
           script: |
             echo ${{secrets.MONOREPO}} | docker login ghcr.io -u LouisLucas64 --password-stdin
-            docker pull ghcr.io/louislucas64/golfepad-back:latest
-            docker pull ghcr.io/louislucas64/golfepad-front:latest
+           
+            docker pull ghcr.io/louislucas64/bloc3devops-back:latest
+            docker pull ghcr.io/louislucas64/bloc3devops-front:latest           
 
             docker compose up -d

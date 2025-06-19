@@ -14,12 +14,24 @@ const deleteCocktailLimiter = rateLimit({
     message: "Too many delete requests from this IP, please try again later."
 });
 
+const modifyCocktailLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 50, // limit each IP to 50 requests per windowMs
+    message: "Too many modify requests from this IP, please try again later."
+});
+
+const addCocktailLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 50, // limit each IP to 50 requests per windowMs
+    message: "Too many add requests from this IP, please try again later."
+});
+
 /*** COCKTAIL ROUTAGE */
 router.get('/', cocktailCtrl.getAllCocktails)
 router.get('/:id([0-9]+)', cocktailCtrl.getCocktail)
 
-router.put('/', checkToken, cocktailCtrl.addCocktail)
-router.patch('/:id([0-9]+)', checkToken, cocktailCtrl.modifyCocktail)
+router.put('/', checkToken, addCocktailLimiter, cocktailCtrl.addCocktail)
+router.patch('/:id([0-9]+)', checkToken, modifyCocktailLimiter, cocktailCtrl.modifyCocktail)
 
 router.delete('/:id([0-9]+)', checkToken, deleteCocktailLimiter, cocktailCtrl.deleteCocktail)
 

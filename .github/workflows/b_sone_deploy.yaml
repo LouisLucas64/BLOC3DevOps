@@ -1,0 +1,16 @@
+name: Sonar_Deploy
+
+on:
+  pull_request:
+    branches:
+      - marcel
+
+  push:
+    branches:
+      - marcel
+
+jobs:
+  Display_Data:
+    runs-on: ubuntu-latest
+    steps:
+      - run: env | sortsd

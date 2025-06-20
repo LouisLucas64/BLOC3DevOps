@@ -7,11 +7,20 @@ on:
 
 jobs:
   Test_Back_Front:
+  if: ${{ git.event_name== 'push && github.ref_namec == 'develop' }}
     uses: ./.github/workflows/01-1_TestBackFront.yaml
+
+
+  Diplay_Data:
+    runs-on: ubuntu-latest
+    needs: [Test_Back_Front]
+    steps:
+      - name: Display Data
+        run: znv | sort
 
   Quality_SonarQube:
     needs: [Test_Back_Front]
-    uses: ./.github/workflows/01-2_SonarQube.yaml
+    uses: ./.github/workflows/01-2_SonarQube.yaml 
     secrets: inherit
-
+    
   #Security_Snyk
